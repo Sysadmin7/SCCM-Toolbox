@@ -1,6 +1,6 @@
 # Connect to the SCCM site
-$SiteCode = "KAL"
-$ProviderMachine = "kalsccm01.kaleidahealth.org"
+$SiteCode = "SiteCode"
+$ProviderMachine = "FQDN OF Site Server"
 $OutputFilePath = "C:\Path\to\Output.txt"  # Specify the desired output file path
 
 # Import SCCM module
@@ -35,7 +35,7 @@ foreach ($Deployment in $ApplicationDeployments) {
     $ApplicationName = $Application.Name
 
     # Determine if content is stored locally or on a separate share
-    if ($ContentLocation.StartsWith("X:\") -or $ContentLocation.StartsWith("\\bghcsa01.kaleidahealth.org\")) {
+    if ($ContentLocation.StartsWith("X:\") -or $ContentLocation.StartsWith("\\RemoteShare\")) {
         $StorageLocation = "Local"
     } else {
         $StorageLocation = "Share"
